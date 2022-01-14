@@ -27,7 +27,7 @@ p {
 }
 
 img {
-  padding-right: 1rem;
+  object-fit: cover; 
 }
 
 .topnav {
@@ -68,7 +68,7 @@ img {
   display: none;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width:1050px) {
   .topnav a {display: none;}
   .topnav a.icon {
     float: right;
@@ -76,7 +76,7 @@ img {
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1050px) {
   .topnav.responsive {position: relative;}
   .topnav.responsive .icon {
     position: absolute;
@@ -88,6 +88,7 @@ img {
     display: block;
     text-align: left;
   }
+  
 }
 
 
@@ -97,7 +98,6 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
   }
 } 
 
@@ -106,13 +106,11 @@ main {
   font-weight: bolder;
   color: black;
   padding-top: 0.5vw;
+  border-radius: 2rem;
+  text-align: justify;
   padding-left: 2vw;
   padding-right: 2vw;
   margin: 1px 20px 15px;
-  border-radius: 2rem;
-  text-align: justify;
-
-
 }
 
 .modal-btn {
@@ -190,10 +188,11 @@ main {
 
 label {
   font-family: var(--font-default);
-  font-size: 17px;
+  font-size: 15px;
   font-weight: normal;
   display: inline-block;
-  margin-bottom: 11px;
+  margin-bottom: 5px;
+  margin-top: 5px;
 }
 input {
   padding: 8px;
@@ -215,7 +214,7 @@ input {
   display: block;
   margin-top: 7px;
   margin-bottom: 7px;
-  text-align: right;
+  text-align: left;
   line-height: 0.3;
   opacity: 0;
   transition: 0.3s;
@@ -403,9 +402,11 @@ input[data-error]::after {
 .text-label {
   font-weight: normal;
   font-size: 16px;
+  margin-top: 0px;
+  transform: translateX(-7px);
 }
 .hero-section {
-  min-height: 93vh;
+  max-height: 800px;
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -436,7 +437,7 @@ input[data-error]::after {
   z-index: 1;
 }
 .hero-headline {
-  font-size: 6rem;
+  font-size: 5rem;
   font-weight: normal;
   white-space: nowrap;
 }
@@ -478,10 +479,16 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
+
 @media screen and (max-width: 800px) {
   .hero-section {
     display: block;
     box-shadow: unset;
+  }
+  .header-logo,img {
+    width: 200px;
+    padding-top: 5px;
+    padding-left: 10px;
   }
   .hero-content {
     background: #fff;
@@ -491,16 +498,14 @@ footer {
   .hero-content::after {
     content: unset;
   }
-  .hero-content .btn-signup {
-    display: none;
-  }
+ 
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 43px;
     white-space: normal;
   }
   .hero-text {
     width: unset;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
   .hero-img img {
     border-radius: 10px;
@@ -527,3 +532,52 @@ footer {
   }
 }
 
+
+@media screen and (max-width: 540px) {
+
+  .header-logo,img {
+    width: 130px;
+    padding-top: 6px;
+    padding-left: 10px;
+  }
+
+  .hero-content .btn-signup {
+    display: none;
+  }
+ 
+}
+
+@media screen and (max-width: 425px) {
+
+  .hero-content{
+    transform: translateX(-13px);
+  }
+  .hero-headline{
+    font-size: 30px;
+    font-weight: bold;
+  }
+  .hero-text {
+    font-size: 1rem;
+    margin-right: 50px;
+    margin-top: 35px;
+  }
+  .content {
+    margin-bottom: 0px;
+    margin-top: 75px;
+    border-radius: 5px;
+    overflow: hidden;
+    padding-top: 10px;
+  }
+  .bground {
+    background-color: rgba(26, 39, 156, 0);
+  }
+  .text-label {
+    font-weight: normal;
+    font-size: 16px;
+    margin-top: 5px;
+    transform: translateX(0px);
+  }
+  .hero-content .btn-signup {
+    display: none;
+   }
+  }
