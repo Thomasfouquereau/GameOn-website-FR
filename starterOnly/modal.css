@@ -129,6 +129,34 @@ main {
   background: #3876ac;
 }
 
+#success{
+  visibility: hidden;
+}
+
+.textSuccess{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 30px;
+  text-align: center;
+  color: #fff;
+}
+
+.btnSuccess{
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px;
+  border-radius: 10px;
+  border-style: none;
+  border-color: #ff0000;
+  background-color: #ff0000;
+  color: #fff;
+  padding: 10px 55px;
+}
+
 .footer {
   margin: 20px;
   padding: 10px;

@@ -28,20 +28,20 @@ function closeModal() {
 }
 
 
+//
+
 
 let myForm = document.getElementsByClassName('content');
 myForm[0].addEventListener('submit', function (e) {
   e.preventDefault();
 
 
-  let myInput = document.getElementById('first');
-  let myRegex = /^[a-zA-Z-\s]+$/;
+  //  First Name
 
- 
+
+  let myInput = document.getElementById('first');
   const isFirstNameValid = isFirstName(myInput.value);
   const parentElem = myInput.parentNode
-
-  //  First Name
 
 
   if (!isFirstNameValid) {
@@ -57,81 +57,128 @@ myForm[0].addEventListener('submit', function (e) {
   //  Last Name
 
 
-  let myInputLast = document.getElementById('Last');
+  let myInputLast = document.getElementById('last');
   const isLastNameValid = isLastName(myInputLast.value);
-  
+  const parentElemLast = myInputLast.parentNode;
+
+
   if (!isLastNameValid) {
-    parentElem.setAttribute("data-error", "Le champs Nom est requis.");
-    parentElem.setAttribute("data-error-visible", true);
-  } else; {
-    parentElem.setAttribute("data-error-visible", false);
+    parentElemLast.setAttribute("data-error", "Le champs Prénom est requis.");
+    parentElemLast.setAttribute("data-error-visible", true);
+  } else {
+    parentElemLast.setAttribute("data-error-visible", false);
   }
 
   console.log(isLastName(myInputLast.value))
 
 
+  //  E-mail
 
-  //  E-mail Name
 
-  let myInputEmail = document.getElementById('email')
+  let myInputEmail = document.getElementById('email');
+  const isEmailValid = isEmail(myInputEmail.value);
+  const parentElemEmail = myInputEmail.parentNode;
 
-  if (myInputEmail.value.trim() == "") {
-    e.preventDefault();
-    const parentElem = myInputEmail.parentNode;
-    parentElem.setAttribute("data-error", "Le champs email est requis.");
-    parentElem.setAttribute("data-error-visible", true);
-  } else (myRegex.test(myInputEmail.value) == false); {
-    e.preventDefault();
+
+  if (!isEmailValid) {
+    parentElemEmail.setAttribute("data-error", "Le champs email est requis.");
+    parentElemEmail.setAttribute("data-error-visible", true);
+  } else {
+    parentElemEmail.setAttribute("data-error-visible", false);
   }
   console.log(isEmail(myInputEmail.value))
 
-  //  Birthdate Name
 
-  let myInputBirthdate = document.getElementById('birthdate')
-  let dateRegex = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/;
+  //  Birthdate 
 
-  if (myInputBirthdate.value.match(dateRegex)) {
-    e.preventDefault();
-    const parentElem = myInputBirthdate.parentNode;
-    parentElem.setAttribute("data-error", "Le champs Date de naissance est requis.");
-    parentElem.setAttribute("data-error-visible", true);
-  } else (dateRegex.test(myInputBirthdate.value) == false); {
-    e.preventDefault();
-  }
-  console.log(isEmail(myInputBirthdate.value))
+  const myDate = new Date;
+  let myInputBirthdate = document.getElementById('birthdate');
+  const isBirthdateValid = isBirthdate(myInputBirthdate.Date);
+  const parentElemBirthdate = myInputBirthdate.parentNode;
 
-  //  Quantity Name
 
-  let myInputQuantity = document.getElementById('quantity')
-
-  console.log(typeof myInputQuantity.value)
-  if (Number(myInputQuantity.value) < 0) {
-    e.preventDefault();
-    const parentElem = myInputQuantity.parentNode;
-    parentElem.setAttribute("data-error", "Le champs combien de tournois est requis.");
-    parentElem.setAttribute("data-error-visible", true);
+  if (!isBirthdateValid) {
+    parentElemBirthdate.setAttribute("data-error", "Le champs Date de naissance est requis.");
+    parentElemBirthdate.setAttribute("data-error-visible", true);
   } else {
-    parentElem.setAttribute("data-error-visible", false);
+    parentElemBirthdate.setAttribute("data-error-visible", false);
   }
-  console.log(isEmail(myInputQuantity.value))
+  console.log(isBirthdate(myInputBirthdate.Date))
+
+
+  //  Quantity 
+
+  let myInputQuantity = document.getElementById('quantity');
+  const isQuantityValid = isQuantity(myInputQuantity.value);
+  const parentElemQuantity = myInputQuantity.parentNode;
+
+
+  if (!isQuantityValid) {
+    parentElemQuantity.setAttribute("data-error", "Le champs tournois ne doit contenir que des chiffres .");
+    parentElemQuantity.setAttribute("data-error-visible", true);
+  } else {
+    parentElemQuantity.setAttribute("data-error-visible", false);
+  }
+  console.log(isBirthdate(myInputQuantity.value))
+
+  //  Radio 
+
+
+  let myInputRadio = document.getElementsByName('location')
+  const isRadioValid = isRadio(myInputRadio.checked);
+  const parentElemRadio = myInputRadio.parentNode;
+
+
+  if (!isRadioValid) {
+    parentElemRadio.setAttribute("data-error", "Le champs Quelles villes est requis.");
+    parentElemRadio.setAttribute("data-error-visible", true);
+  } else {
+    //parentElemRadio.setAttribute("data-error-visible", false);
+  }
+  console.log(isRadio(myInputRadio.checked))
+
+
+  //checkbox1
+
+
+  let myInputCheckbox1 = document.getElementById('checkbox1');
+  const isCheckbox1Valid = isCheckbox1(myInputCheckbox1.checked);
+  const parentElemCheckbox1 = myInputCheckbox1.parentNode;
+
+
+  if (!isCheckbox1Valid) {
+    parentElemCheckbox1.setAttribute("data-error", "accepté les conditions d'utilisation est requis.");
+    parentElemCheckbox1.setAttribute("data-error-visible", true);
+  } else {
+    parentElemCheckbox1.setAttribute("data-error-visible", false);
+  }
+  console.log(isCheckbox1(myInputCheckbox1.checked))
+
 
   //  validation
 
 
-  if (isFirstNameValid && isLastNameValid ) {
-    alert("YES")
-  } else {
-    alert("NO")
+  const modalBody = document.getElementById('modal-body');
+  const modalSuccess = document.getElementById('success');
+  const modalBtnClose = [...document.getElementsByClassName("btnSuccess")];
+
+  modalBtnClose.forEach((btn) => btn.addEventListener("click", closeBtnModal));
+
+  function closeBtnModal() {
+    modalbg.style.display = "none";
   }
+
+
+  if (isFirstNameValid && isLastNameValid && isEmailValid && isQuantityValid) {
+    modalBody.style.visibility = 'hidden';
+    modalSuccess.style.visibility = 'visible';
+  } else {
+    modalBody.style.display = "block";
+  }
+
 
   // Function
 
-  function isPositive(num) {
-    if (num > 0) return true
-    return false
-  }
-
-  isPositive()
 
   function isFirstName(val) {
     if (val.trim().length >= 2) {
@@ -140,6 +187,7 @@ myForm[0].addEventListener('submit', function (e) {
       return false
     }
   }
+
   function isLastName(val) {
     if (val.trim().length >= 2) {
       return true
@@ -147,11 +195,38 @@ myForm[0].addEventListener('submit', function (e) {
       return false
     }
   }
-  function isEmail(valE) {
-    if (valE.length >= 2) {
+
+  function isEmail(email) {
+    const regex = /\S+@\S+\.\S+/;
+    return regex.test(email);
+  }
+
+  function isBirthdate(Birthdate) {
+    if (Birthdate < myDate) {
       return true
     } else {
       return false
+    }
+  }
+
+  function isQuantity(val) {
+    const regex = /[0-9]/;
+    return regex.test(val);
+  }
+
+  function isRadio(checked) {
+    if (checked != null) {
+      return false
+    } else {
+      return true
+    }
+  }
+
+  function isCheckbox1(checked) {
+    if (checked != null) {
+      return false
+    } else {
+      return true
     }
   }
 
