@@ -6,229 +6,233 @@ function editNav() {
     x.className = "topnav";
   }
 }
-
-// DOM Elements
+/**
+ * DOM Element
+ */
+const modalBody = document.getElementById('modal-body');
+const modalSuccess = document.getElementById('success');
+const modalBtnClose = [...document.getElementsByClassName("btnSuccess")];
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const modalClose = [...document.getElementsByClassName("close")];
 const formData = document.querySelectorAll(".formData");
-
-// launch modal event
+/**
+ * launch modal event
+ */
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-
-// launch modal form
+/**
+ * launch modal form
+ */
 function launchModal() {
   modalbg.style.display = "block";
 }
-
+/**
+ * fermer le modal avec le buton X
+ */
 modalClose.forEach((btn) => btn.addEventListener("click", closeModal));
-
 function closeModal() {
   modalbg.style.display = "none";
 }
-
-
-//
-
-
+/**
+ * 
+ */
 let myForm = document.getElementsByClassName('content');
 myForm[0].addEventListener('submit', function (e) {
   e.preventDefault();
-
-
-  //  First Name
-
-
+  /**
+   * validtion pour le Prénom
+   */
   let myInput = document.getElementById('first');
   const isFirstNameValid = isFirstName(myInput.value);
   const parentElem = myInput.parentNode
-
-
+  /**
+   * envoie ou pas le message d'erreur
+   */
   if (!isFirstNameValid) {
     parentElem.setAttribute("data-error", "Le champs Prénom est requis.");
     parentElem.setAttribute("data-error-visible", true);
   } else {
     parentElem.setAttribute("data-error-visible", false);
   }
-
-  console.log(isFirstName(myInput.value))
-
-
-  //  Last Name
-
-
+  /**
+   * validation pour le Nom
+   */
   let myInputLast = document.getElementById('last');
   const isLastNameValid = isLastName(myInputLast.value);
   const parentElemLast = myInputLast.parentNode;
-
-
+  /**
+   * envoie ou pas le message d'erreur
+   */
   if (!isLastNameValid) {
     parentElemLast.setAttribute("data-error", "Le champs Prénom est requis.");
     parentElemLast.setAttribute("data-error-visible", true);
   } else {
     parentElemLast.setAttribute("data-error-visible", false);
   }
-
-  console.log(isLastName(myInputLast.value))
-
-
-  //  E-mail
-
-
+  /**
+   * validation pour l'E-mail
+   */
   let myInputEmail = document.getElementById('email');
   const isEmailValid = isEmail(myInputEmail.value);
   const parentElemEmail = myInputEmail.parentNode;
-
-
+  /**
+   * envoie ou pas le message d'erreur
+   */
   if (!isEmailValid) {
     parentElemEmail.setAttribute("data-error", "Le champs email est requis.");
     parentElemEmail.setAttribute("data-error-visible", true);
   } else {
     parentElemEmail.setAttribute("data-error-visible", false);
   }
-  console.log(isEmail(myInputEmail.value))
-
-
-  //  Birthdate 
-
-  const myDate = new Date;
+  /**
+   * validation pour la Date de naissance
+   */
   let myInputBirthdate = document.getElementById('birthdate');
-  const isBirthdateValid = isBirthdate(myInputBirthdate.Date);
+  const isBirthdateValid = isBirthdate(myInputBirthdate.value);
   const parentElemBirthdate = myInputBirthdate.parentNode;
-
-
+  /**
+   * envoie ou pas le message d'erreur
+   */
   if (!isBirthdateValid) {
-    parentElemBirthdate.setAttribute("data-error", "Le champs Date de naissance est requis.");
+    parentElemBirthdate.setAttribute("data-error", "Le champs Date de naissance DD/MM/YYYY est requis.");
     parentElemBirthdate.setAttribute("data-error-visible", true);
   } else {
     parentElemBirthdate.setAttribute("data-error-visible", false);
   }
-  console.log(isBirthdate(myInputBirthdate.Date))
-
-
-  //  Quantity 
-
+  /**
+   * validation pour le nombre de tournois GameOn participé
+   */
   let myInputQuantity = document.getElementById('quantity');
   const isQuantityValid = isQuantity(myInputQuantity.value);
   const parentElemQuantity = myInputQuantity.parentNode;
-
-
+  /**
+   * envoie ou pas le message d'erreur
+   */
   if (!isQuantityValid) {
     parentElemQuantity.setAttribute("data-error", "Le champs tournois ne doit contenir que des chiffres .");
     parentElemQuantity.setAttribute("data-error-visible", true);
   } else {
     parentElemQuantity.setAttribute("data-error-visible", false);
   }
-  console.log(isBirthdate(myInputQuantity.value))
-
-  //  Radio 
-
-
+  /**
+   * validation pour la villes choisi
+   */
   let myInputRadio = document.getElementsByName('location')
-  const isRadioValid = isRadio(myInputRadio.checked);
-  const parentElemRadio = myInputRadio.parentNode;
-
-
+  const radioList = [...myInputRadio];
+  const isRadioValid = isRadio(radioList);
+  const parentElemRadio = myInputRadio[0].parentNode;
+  /**
+   * envoie ou pas le message d'erreur
+   */
   if (!isRadioValid) {
     parentElemRadio.setAttribute("data-error", "Le champs Quelles villes est requis.");
     parentElemRadio.setAttribute("data-error-visible", true);
   } else {
-    //parentElemRadio.setAttribute("data-error-visible", false);
+    parentElemRadio.setAttribute("data-error-visible", false);
   }
-  console.log(isRadio(myInputRadio.checked))
-
-
-  //checkbox1
-
-
-  let myInputCheckbox1 = document.getElementById('checkbox1');
-  const isCheckbox1Valid = isCheckbox1(myInputCheckbox1.checked);
-  const parentElemCheckbox1 = myInputCheckbox1.parentNode;
-
-
-  if (!isCheckbox1Valid) {
-    parentElemCheckbox1.setAttribute("data-error", "accepté les conditions d'utilisation est requis.");
-    parentElemCheckbox1.setAttribute("data-error-visible", true);
+  /**
+   * checkbox pour les conditions d utilisation.
+   */
+  let myInputConditionsUtilisation = document.getElementById('checkbox1');
+  const isConditionsUtilisationValid = isConditionsUtilisation(myInputConditionsUtilisation);
+  const parentElemConditionsUtilisation = myInputConditionsUtilisation.parentNode;
+  /**
+   * envoie ou pas le message d'erreur
+   */
+  if (!isConditionsUtilisationValid) {
+    parentElemConditionsUtilisation.setAttribute("data-error", "accepté les conditions d'utilisation est requis.");
+    parentElemConditionsUtilisation.setAttribute("data-error-visible", true);
   } else {
-    parentElemCheckbox1.setAttribute("data-error-visible", false);
+    parentElemConditionsUtilisation.setAttribute("data-error-visible", false);
   }
-  console.log(isCheckbox1(myInputCheckbox1.checked))
-
-
-  //  validation
-
-
-  const modalBody = document.getElementById('modal-body');
-  const modalSuccess = document.getElementById('success');
-  const modalBtnClose = [...document.getElementsByClassName("btnSuccess")];
-
+  /**
+  * Fermer le modal sur l'écran de succès
+  */
   modalBtnClose.forEach((btn) => btn.addEventListener("click", closeBtnModal));
-
   function closeBtnModal() {
     modalbg.style.display = "none";
   }
-
-
-  if (isFirstNameValid && isLastNameValid && isEmailValid && isQuantityValid) {
+  /**
+* affiche le message de succès 
+*/
+  if (isFirstNameValid && isLastNameValid && isEmailValid && isQuantityValid && isRadioValid && isBirthdateValid && isConditionsUtilisationValid) {
     modalBody.style.visibility = 'hidden';
     modalSuccess.style.visibility = 'visible';
   } else {
     modalBody.style.display = "block";
   }
-
-
   // Function
-
-
+  /**
+  * fonction pour le prénom
+  * @param {string} val 
+  * @returns vrais ci le nombre de caracter et egale ou superieur a 2
+  */
   function isFirstName(val) {
-    if (val.trim().length >= 2) {
-      return true
-    } else {
-      return false
-    }
+    return val.trim().length >= 2
   }
-
+  /**
+  * fonction pour le nom
+  * @param {string} val 
+  * @returns vrais ci le nombre de caracter et egale ou superieur a 2
+  */
   function isLastName(val) {
-    if (val.trim().length >= 2) {
-      return true
-    } else {
-      return false
-    }
+    return val.trim().length >= 2
   }
-
+  /**
+   * fonction pour validé l'E-mail avec une regex
+   * @param {string} email 
+   * @returns vrais si l'Email est en accord avec la regex test@test.test
+   */
   function isEmail(email) {
     const regex = /\S+@\S+\.\S+/;
     return regex.test(email);
   }
-
+  /**
+   * fonction pour validé la date d'anniversaire avec une date
+   * @param {date} Birthdate 
+   * @returns vrais ci la date est inférieur a la date du jour JJ/MM/AAAA
+   */
   function isBirthdate(Birthdate) {
-    if (Birthdate < myDate) {
-      return true
-    } else {
-      return false
-    }
-  }
+    const myDate = new Date();
+    const inputDate = new Date(Birthdate);
+    return inputDate < myDate
 
+  }
+  /**
+   * fonction pour valdé le nombre de participation 
+   * @param {number} val 
+   * @returns vrais si il y a un un chiffre comprise entre 0-9
+   */
   function isQuantity(val) {
-    const regex = /[0-9]/;
+    const regex = /[- 0-9]/;
     return regex.test(val);
   }
-
-  function isRadio(checked) {
-    if (checked != null) {
-      return false
-    } else {
-      return true
+  /**
+   * fonction pour validé les radio dans une list
+   * @param {list} radioList 
+   * @returns vrais ci un buttons de la list est cocher  
+   */
+  function isRadio(radioList) {
+    let isChecked = false;
+    for (let i = 0; i < radioList.length; i += 1) {
+      if (radioList[i].checked) {
+        isChecked = true;
+      }
     }
+    return isChecked;
   }
-
-  function isCheckbox1(checked) {
-    if (checked != null) {
-      return false
-    } else {
-      return true
-    }
+  /**
+   * fonction pour validé les condition d'utilisation
+   */
+  function isConditionsUtilisation(radio) {
+    return radio.checked;
   }
-
-
+})
+/**
+ * Reset le formulaire 
+ */
+document.getElementById("btnSuccess").addEventListener("click", function () {
+  modalBody.style.visibility = 'visible';
+  modalSuccess.style.visibility = 'hidden';
+  document.forms[0].reset();
 })
