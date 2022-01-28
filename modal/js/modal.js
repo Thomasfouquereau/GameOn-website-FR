@@ -31,8 +31,16 @@ function launchModal() {
  */
 modalClose.forEach((btn) => btn.addEventListener("click", closeModal));
 function closeModal() {
-  modalbg.style.display = "none";
+  if(modalbg.style.display == "block"){
+    modalbg.style.display = "none";
+  }if (modalSuccess.style.visibility = "visible"){
+    modalSuccess.style.visibility = 'hidden';
+    document.forms[0].reset();
+    modalBody.style.visibility = 'visible';
+  }
+
 }
+
 /**
  * 
  */
@@ -161,72 +169,7 @@ myForm[0].addEventListener('submit', function (e) {
   } else {
     modalBody.style.display = "block";
   }
-  // Function
-  /**
-  * fonction pour le prénom
-  * @param {string} val 
-  * @returns vrais ci le nombre de caracter et egale ou superieur a 2
-  */
-  function isFirstName(val) {
-    return val.trim().length >= 2
-  }
-  /**
-  * fonction pour le nom
-  * @param {string} val 
-  * @returns vrais ci le nombre de caracter et egale ou superieur a 2
-  */
-  function isLastName(val) {
-    return val.trim().length >= 2
-  }
-  /**
-   * fonction pour validé l'E-mail avec une regex
-   * @param {string} email 
-   * @returns vrais si l'Email est en accord avec la regex test@test.test
-   */
-  function isEmail(email) {
-    const regex = /\S+@\S+\.\S+/;
-    return regex.test(email);
-  }
-  /**
-   * fonction pour validé la date d'anniversaire avec une date
-   * @param {date} Birthdate 
-   * @returns vrais ci la date est inférieur a la date du jour JJ/MM/AAAA
-   */
-  function isBirthdate(Birthdate) {
-    const myDate = new Date();
-    const inputDate = new Date(Birthdate);
-    return inputDate < myDate
 
-  }
-  /**
-   * fonction pour valdé le nombre de participation 
-   * @param {number} val 
-   * @returns vrais si il y a un un chiffre comprise entre 0-9
-   */
-  function isQuantity(val) {
-    const regex = /[- 0-9]/;
-    return regex.test(val);
-  }
-  /**
-   * fonction pour validé les radio dans une list
-   * @param {list} radioList 
-   * @returns vrais ci un buttons de la list est cocher  
-   */
-  function isRadio(radioList) {
-    let isChecked = false;
-    for (let i = 0; i < radioList.length; i += 1) {
-      if (radioList[i].checked) {
-        isChecked = true;
-      }
-    }
-    return isChecked;
-  }
-  /**
-   * fonction pour validé les condition d'utilisation
-   */
-  function isConditionsUtilisation(radio) {
-    return radio.checked;
-  }
 })
 /**
  * Reset le formulaire 
@@ -235,4 +178,73 @@ document.getElementById("btnSuccess").addEventListener("click", function () {
   modalBody.style.visibility = 'visible';
   modalSuccess.style.visibility = 'hidden';
   document.forms[0].reset();
-})
+}
+)
+
+// Function
+/**
+* fonction pour le prénom
+* @param {string} val 
+* @returns {boolean} vrais ci le nombre de caracter et egale ou superieur a 2
+*/
+function isFirstName(val) {
+  return val.trim().length >= 2
+}
+/**
+* fonction pour le nom
+* @param {string} val 
+* @returns {boolean}vrais ci le nombre de caracter et egale ou superieur a 2
+*/
+function isLastName(val) {
+  return val.trim().length >= 2
+}
+/**
+ * fonction pour validé l'E-mail avec une regex
+ * @param {string} email 
+ * @returns {boolean}vrais si l'Email est en accord avec la regex test@test.test
+ */
+function isEmail(email) {
+  const regex = /\S+@\S+\.\S+/;
+  return regex.test(email);
+}
+/**
+ * fonction pour validé la date d'anniversaire avec une date
+ * @param {string} Birthdate 
+ * @returns {boolean}vrais ci la date est inférieur a la date du jour JJ/MM/AAAA
+ */
+function isBirthdate(Birthdate) {
+  const myDate = new Date();
+  const inputDate = new Date(Birthdate);
+  return inputDate < myDate
+
+}
+/**
+ * fonction pour valdé le nombre de participation 
+ * @param {string} val 
+ * @returns {boolean}vrais si il y a un un chiffre comprise entre 0-9
+ */
+function isQuantity(val) {
+  const qty = Number(val);
+  return qty >= 0
+
+}
+/**
+ * fonction pour validé les radio dans une list
+ * @param {list} radioList 
+ * @returns {boolean} vrais ci un buttons de la list est cocher  
+ */
+function isRadio(radioList) {
+  let isChecked = false;
+  for (let i = 0; i < radioList.length; i += 1) {
+    if (radioList[i].checked) {
+      isChecked = true;
+    }
+  }
+  return isChecked;
+}
+/**
+ * fonction pour validé les condition d'utilisation
+ */
+function isConditionsUtilisation(radio) {
+  return radio.checked;
+}
