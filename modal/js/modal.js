@@ -57,7 +57,7 @@ myForm[0].addEventListener('submit', function (e) {
    * envoie ou pas le message d'erreur
    */
   if (!isFirstNameValid) {
-    parentElem.setAttribute("data-error", "Le champs Prénom est requis.");
+    parentElem.setAttribute("data-error", "Le champ Prénom doit comporter au moins 2 caractères.");
     parentElem.setAttribute("data-error-visible", true);
   } else {
     parentElem.setAttribute("data-error-visible", false);
@@ -72,7 +72,7 @@ myForm[0].addEventListener('submit', function (e) {
    * envoie ou pas le message d'erreur
    */
   if (!isLastNameValid) {
-    parentElemLast.setAttribute("data-error", "Le champs Prénom est requis.");
+    parentElemLast.setAttribute("data-error", "Le champ Nom doit comporter au moins 2 caractères.");
     parentElemLast.setAttribute("data-error-visible", true);
   } else {
     parentElemLast.setAttribute("data-error-visible", false);
@@ -87,7 +87,7 @@ myForm[0].addEventListener('submit', function (e) {
    * envoie ou pas le message d'erreur
    */
   if (!isEmailValid) {
-    parentElemEmail.setAttribute("data-error", "Le champs email est requis.");
+    parentElemEmail.setAttribute("data-error", "L'email doit être conforme.");
     parentElemEmail.setAttribute("data-error-visible", true);
   } else {
     parentElemEmail.setAttribute("data-error-visible", false);
@@ -102,7 +102,7 @@ myForm[0].addEventListener('submit', function (e) {
    * envoie ou pas le message d'erreur
    */
   if (!isBirthdateValid) {
-    parentElemBirthdate.setAttribute("data-error", "Le champs Date de naissance DD/MM/YYYY est requis.");
+    parentElemBirthdate.setAttribute("data-error", "La Date de naissance DD/MM/YYYY doit être conforme.");
     parentElemBirthdate.setAttribute("data-error-visible", true);
   } else {
     parentElemBirthdate.setAttribute("data-error-visible", false);
@@ -117,7 +117,7 @@ myForm[0].addEventListener('submit', function (e) {
    * envoie ou pas le message d'erreur
    */
   if (!isQuantityValid) {
-    parentElemQuantity.setAttribute("data-error", "Le champs tournois ne doit contenir que des chiffres .");
+    parentElemQuantity.setAttribute("data-error", "le champ doit continuer un nombre.");
     parentElemQuantity.setAttribute("data-error-visible", true);
   } else {
     parentElemQuantity.setAttribute("data-error-visible", false);
@@ -133,7 +133,7 @@ myForm[0].addEventListener('submit', function (e) {
    * envoie ou pas le message d'erreur
    */
   if (!isRadioValid) {
-    parentElemRadio.setAttribute("data-error", "Le champs Quelles villes est requis.");
+    parentElemRadio.setAttribute("data-error", "sélectionner au moins un ville.");
     parentElemRadio.setAttribute("data-error-visible", true);
   } else {
     parentElemRadio.setAttribute("data-error-visible", false);
@@ -148,7 +148,7 @@ myForm[0].addEventListener('submit', function (e) {
    * envoie ou pas le message d'erreur
    */
   if (!isConditionsUtilisationValid) {
-    parentElemConditionsUtilisation.setAttribute("data-error", "accepté les conditions d'utilisation est requis.");
+    parentElemConditionsUtilisation.setAttribute("data-error", "accepté les conditions d'utilisation.");
     parentElemConditionsUtilisation.setAttribute("data-error-visible", true);
   } else {
     parentElemConditionsUtilisation.setAttribute("data-error-visible", false);
