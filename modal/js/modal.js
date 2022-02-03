@@ -153,6 +153,7 @@ myForm[0].addEventListener('submit', function (e) {
   } else {
     parentElemConditionsUtilisation.setAttribute("data-error-visible", false);
   }
+
   /**
   * Fermer le modal sur l'écran de succès
   */
@@ -216,7 +217,6 @@ function isBirthdate(Birthdate) {
   const myDate = new Date();
   const inputDate = new Date(Birthdate);
   return inputDate < myDate
-
 }
 /**
  * fonction pour valdé le nombre de participation 
