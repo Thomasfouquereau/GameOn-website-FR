@@ -226,7 +226,6 @@ function isBirthdate(Birthdate) {
 function isQuantity(val) {
   const qty = Number(val);
   return qty >= 0
-
 }
 /**
  * fonction pour validé les radio dans une list
