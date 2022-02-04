@@ -112,6 +112,7 @@ myForm[0].addEventListener('submit', function (e) {
    */
   let myInputQuantity = document.getElementById('quantity');
   const isQuantityValid = isQuantity(myInputQuantity.value);
+  console.log (Number (myInputQuantity.value));
   const parentElemQuantity = myInputQuantity.parentNode;
   /**
    * envoie ou pas le message d'erreur
@@ -224,6 +225,9 @@ function isBirthdate(Birthdate) {
  * @returns {boolean}vrais si il y a un un chiffre comprise entre 0-9
  */
 function isQuantity(val) {
+  if(val === ''){
+    return false
+  }
   const qty = Number(val);
   return qty >= 0
 }
